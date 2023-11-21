@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    // Puedes agregar aquí comandos específicos para construir tu aplicación
+                    // Por ejemplo: ./gradlew build o mvn clean install
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    // Detener y eliminar el contenedor existente
+                    sh 'docker stop mi_aplicacion || true'
+                    sh 'docker rm mi_aplicacion || true'
+
+                    // Iniciar el contenedor con la nueva imagen desde DockerHub
+                    sh 'docker run -d --name mi_aplicacion -p 8080:8080 tu_usuario/tu_imagen:latest'
+                }
+            }
+        }
+    }
+}
