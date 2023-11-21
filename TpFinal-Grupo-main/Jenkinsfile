@@ -48,7 +48,7 @@ pipeline {
 					// Crear la red si no existe
             		bat 'docker network ls | find "springboot-mysql-net" || docker network create springboot-mysql-net'
                     // Iniciar el contenedor con la nueva imagen desde DockerHub
-                    bat 'docker run -d ---network=springboot-mysql-net  --name springbootmysqlproject -p 8080:8080 maxicrah/springbootmysql:latest'
+                   bat 'docker run -d --network=springboot-mysql-net --name springbootmysqlproject -p 8080:8080 maxicrah/springbootmysql:latest'
                 }
             }
         }
