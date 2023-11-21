@@ -13,7 +13,7 @@ pipeline {
                 script {
                     // Puedes agregar aquí comandos específicos para construir tu aplicación
                     // Por ejemplo: ./gradlew build o mvn clean install
-                    sh 'mvn clean install'
+                    bat 'mvn clean install'
                 }
             }
         }
@@ -21,12 +21,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Detener y eliminar el contenedor existente
-                    sh 'docker stop springbootmysql || true'
-                    sh 'docker rm springbootmysql || true'
+                    // Detener y eliminar el contenedor existente (si existe)
+                    bat 'docker stop springbootmysqlproject || exit 0'
+                    bat 'docker rm springbootmysqlproject || exit 0'
 
                     // Iniciar el contenedor con la nueva imagen desde DockerHub
-                    sh 'docker run -d --name springbootmysqlproject -p 8080:8080 maxicrah/springbootmysql:latest'
+                    bat 'docker run -d --name springbootmysqlproject -p 8080:8080 maxicrah/springbootmysql:latest'
                 }
             }
         }
