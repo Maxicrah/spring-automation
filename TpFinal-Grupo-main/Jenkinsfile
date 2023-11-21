@@ -15,7 +15,9 @@ pipeline {
                 script {
                     // Puedes agregar aquí comandos específicos para construir tu aplicación
                     // Por ejemplo: ./gradlew build o mvn clean install
+                    dir('C:\Users\maxim\OneDrive\Escritorio\TpSpring\TpFinal-Grupo-main'){
                     bat 'mvn clean install'
+                    }
                 }
             }
         }
