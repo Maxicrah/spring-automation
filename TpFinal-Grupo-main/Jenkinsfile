@@ -49,7 +49,7 @@ pipeline {
                     bat 'docker rm springbootmysqlproject || exit 0'
 
                     // Iniciar el contenedor con la nueva imagen desde DockerHub
-                    bat 'docker run -d --name springbootmysqlproject -p 8888:8080 maxicrah/springbootmysql:latest'
+                    bat 'docker run -d --name springbootmysqlproject -p 8080:8080 maxicrah/springbootmysql:latest'
                 }
             }
         }
