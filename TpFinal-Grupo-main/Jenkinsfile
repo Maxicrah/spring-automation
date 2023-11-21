@@ -31,7 +31,9 @@ pipeline {
                         // Etiquetar la imagen
                         bat 'docker tag maxicrah/springbootmysql:latest maxicrah/springbootmysql:latest'
                         // Iniciar sesión en Docker Hub (asegúrate de tener credenciales configuradas en Jenkins)
-                        bat 'echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin'
+                       withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+    					bat "docker login -u maxicrah -p ${dockerhubpwd}"
+}
                         // Empujar la imagen a Docker Hub
                         bat 'docker push maxicrah/springbootmysql:latest'
                     }
