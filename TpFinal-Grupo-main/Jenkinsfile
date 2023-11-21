@@ -22,11 +22,11 @@ pipeline {
             steps {
                 script {
                     // Detener y eliminar el contenedor existente
-                    sh 'docker stop mi_aplicacion || true'
-                    sh 'docker rm mi_aplicacion || true'
+                    sh 'docker stop springbootmysql || true'
+                    sh 'docker rm springbootmysql || true'
 
                     // Iniciar el contenedor con la nueva imagen desde DockerHub
-                    sh 'docker run -d --name mi_aplicacion -p 8080:8080 tu_usuario/tu_imagen:latest'
+                    sh 'docker run -d --name springbootmysqlproject -p 8080:8080 maxicrah/springbootmysql:latest'
                 }
             }
         }
