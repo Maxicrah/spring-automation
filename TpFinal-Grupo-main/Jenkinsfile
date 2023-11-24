@@ -51,7 +51,7 @@ pipeline {
             		bat 'docker network ls | find "springboot-mysql-net" || docker network create springboot-mysql-net'
                     // Iniciar el contenedor con la nueva imagen desde DockerHub
                   // bat 'docker run -d --network=springboot-mysql-net --name springboot-mysql-cluster -p 8089:8080 maxicrah/springbootmysql:latest'
-                   bat 'docker run -p 8093:8080 --name springboot-mysql-cluster --net cluster -e MYSQL_HOST=192.168.0.10 -e MYSQL_DB_NAME=tpfinal -e -MYSQL_USER=root -e MYSQL_PORT=3306 -e MYSQL_PASSWORD=poli1234 maxicrah/springbootmysql:latest'
+                   bat 'docker run -d -p 8093:8080 --name springboot-mysql-cluster --net cluster -e MYSQL_HOST=192.168.0.10 -e MYSQL_DB_NAME=tpfinal -e -MYSQL_USER=root -e MYSQL_PORT=3306 -e MYSQL_PASSWORD=poli1234 maxicrah/springbootmysql:latest'
                 }
             }
         }
