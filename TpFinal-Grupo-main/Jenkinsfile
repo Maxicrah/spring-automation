@@ -45,12 +45,12 @@ pipeline {
             steps {
                 script {
                     // Detener y eliminar el contenedor existente (si existe)
-                    bat 'docker stop springbootmysqlproject || exit 0'
-                    bat 'docker rm springbootmysqlproject || exit 0'
+                    bat 'docker stop springboot-mysql-cluster || exit 0'
+                    bat 'docker rm springboot-mysql-cluster || exit 0'
 					// Crear la red si no existe
             		bat 'docker network ls | find "springboot-mysql-net" || docker network create springboot-mysql-net'
                     // Iniciar el contenedor con la nueva imagen desde DockerHub
-                   bat 'docker run -d --network=springboot-mysql-net --name springbootmysqlproject -p 8080:8080 maxicrah/springbootmysql:latest'
+                   bat 'docker run -d --network=springboot-mysql-net --name springboot-mysql-cluster -p 8089:8080 maxicrah/springbootmysql:latest'
                 }
             }
         }
